@@ -2,5 +2,9 @@
 *.html
 __pycache__/
 *.xml
+<<<<<<< HEAD
 *.log
 *.png
+=======
+*.log
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718

@@ -39,7 +39,11 @@ Privatization view test
 
 Prepare environment
     ${chromeOptions}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+<<<<<<< HEAD
     Call Method    ${chromeOptions}    add_argument    --headless
+=======
+#    Call Method    ${chromeOptions}    add_argument    --headless
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
     Create Webdriver  Chrome  chrome_options=${chromeOptions}
     Set Window Size  1024  10000
     Go To  ${host}
@@ -52,6 +56,7 @@ Test tubs auctions
     Click Element	xpath=(//a[@class="dropdown-toggle"])[1]
     ${type_index}=  Get Element Count  xpath=//ul[@id="w2"]/descendant::*[contains(@href,"${host}tenders/")]
     ${type_index}=  Convert To Integer   ${type_index}
+<<<<<<< HEAD
     FOR  ${t_index}  IN RANGE  ${type_index}
         Wait and Click  xpath=//ul[@id="w2"]/descendant::*[contains(@href,"${host}tenders/")][${t_index + 1}]
         Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=(//div[@class="search-result_t"])[1]
@@ -59,6 +64,14 @@ Test tubs auctions
         Go To  ${host}/tenders/index
         Click Element	xpath=(//a[@class="dropdown-toggle"])[1]
     END
+=======
+    :FOR  ${t_index}  IN RANGE  ${type_index}
+    \    Wait and Click  xpath=//ul[@id="w2"]/descendant::*[contains(@href,"${host}tenders/")][${t_index + 1}]
+    \    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=(//div[@class="search-result_t"])[1]
+    \    Test auction view
+    \    Go To  ${host}/tenders/index
+    \    Click Element	xpath=(//a[@class="dropdown-toggle"])[1]
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
 
 
 Test auction view
@@ -66,6 +79,7 @@ Test auction view
     Wait Until Element Is Visible  xpath=//a[@class="mk-btn mk-btn_default"]
     ${auction_index}=  Get Element Count  xpath=//a[@class="mk-btn mk-btn_default"]
     ${auction_index}=  Convert To Integer   ${auction_index}
+<<<<<<< HEAD
     FOR  ${a_index}  IN RANGE  ${auction_index}
         Scroll To Element  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
         Wait and Click  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
@@ -76,6 +90,16 @@ Test auction view
         Go To  ${host}/tenders/index
     END
 
+=======
+    :FOR  ${a_index}  IN RANGE  ${auction_index}
+    \    Scroll To Element  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
+    \    Wait and Click  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
+    \    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.questions"]
+    \    Wait Until Keyword Succeeds  10 x  1 s  Run Keywords
+         ...    Wait and Click  xpath=//a[@data-test-id="sidebar.questions"]
+         ...    AND  Wait Until Keyword Succeeds  5 x  1 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.info"]
+    \    Go To  ${host}/tenders/index
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
 
 
 Test elastic auction_id search
@@ -127,18 +151,29 @@ Test tubs documents
     Wait Until Element Is Visible  xpath=//ul[@id="w5"]/descendant::*[contains(@href,"${host}pages/customer")]
     ${doc_index}=  Get Element Count  xpath=//ul[@id="w5"]/descendant::*[contains(@href,"${host}pages/customer")]
     ${doc_index}=  Convert To Integer   ${doc_index}
+<<<<<<< HEAD
     FOR  ${d_index}  IN RANGE  ${doc_index}
         ${doc_type}=  Get Element Attribute  xpath=(//ul[@id="w5"]/descendant::*[contains(@href,"${host}pages/customer")])[${d_index + 1}]  href
         Run Keyword If  'agreement' in '${doc_type}'  Test view participant agreement  ${d_index}
+=======
+    :FOR  ${d_index}  IN RANGE  ${doc_index}
+    \    ${doc_type}=  Get Element Attribute  xpath=(//ul[@id="w5"]/descendant::*[contains(@href,"${host}pages/customer")])[${d_index + 1}]  href
+    \    Run Keyword If  'agreement' in '${doc_type}'  Test view participant agreement  ${d_index}
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
          ...    ELSE IF  'instruction' in '${doc_type}'  Test view instruction  ${d_index}
          ...    ELSE IF  'sp-guides' in '${doc_type}'   Test view sp-guides  ${d_index}
          ...    ELSE IF  'aboutus' in '${doc_type}'   Test view aboutus  ${d_index}
          ...    ELSE IF  'regulation' in '${doc_type}'   Test view regulations  ${d_index}
          ...    ELSE IF  'guidelines' in '${doc_type}'    Test view guidelines  ${d_index}
+<<<<<<< HEAD
         Go To  ${host}
         Click Element	xpath=(//a[@class="dropdown-toggle"])[2]
     END
 
+=======
+    \    Go To  ${host}
+    \    Click Element	xpath=(//a[@class="dropdown-toggle"])[2]
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
 
 
 Test view participant agreement
@@ -181,12 +216,19 @@ Test view regulations
     Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//div[@class="page-header"]//*[contains(text(),"Регламент")]
     ${file_index}=  Get Element Count  xpath=//*[contains(@href,"/uploads/pages/files")]
     ${file_index}=  Convert To Integer  ${file_index}
+<<<<<<< HEAD
     FOR  ${f_index}  IN RANGE  ${file_index}
         Wait and Click  xpath=(//*[contains(@href,"/uploads/pages/files")])[${f_index + 1}]
         Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//embed[@type="application/pdf"]
         Go TO  ${host}pages/customers/regulation
     END
 
+=======
+    :FOR  ${f_index}  IN RANGE  ${file_index}
+    \    Wait and Click  xpath=(//*[contains(@href,"/uploads/pages/files")])[${f_index + 1}]
+    \    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//embed[@type="application/pdf"]
+    \    Go TO  ${host}pages/customers/regulation
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
 
 Test view guidelines
     [Arguments]  ${d_index}
@@ -195,11 +237,18 @@ Test view guidelines
     ...    AND  Wait and Click  xpath=//ul[@id="w5"]/descendant::*[contains(@href,"${host}pages/customer")][${d_index+ 1}]
     ${file_index}=  Get Element Count  xpath=//*[contains(@href,"/uploads/pages/files")and contains(text(),"Інструкція")]
     ${file_index}=  Convert To Integer  ${file_index}
+<<<<<<< HEAD
     FOR  ${f_index}  IN RANGE  ${file_index}
         Wait and Click  xpath=(//*[contains(@href,"/uploads/pages/files")and contains(text(),"Інструкція")])[${f_index + 1}]
         Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//embed[@type="application/pdf"]
         Go TO  ${host}pages/customers/guidelines
     END
+=======
+    :FOR  ${f_index}  IN RANGE  ${file_index}
+    \    Wait and Click  xpath=(//*[contains(@href,"/uploads/pages/files")and contains(text(),"Інструкція")])[${f_index + 1}]
+    \    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//embed[@type="application/pdf"]
+    \    Go TO  ${host}pages/customers/guidelines
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
 
 
 #--------------------------------------Privatization view test---------------------------------------------------
@@ -210,6 +259,7 @@ Test tubs privatization
     Click Element	xpath=(//a[@class="dropdown-toggle"])[3]
     ${tab_index}=  Get Element Count  xpath=//ul[@id="w4"]/descendant::*[contains(@href,"${host}")]
     ${tab_index}=  Convert To Integer   ${tab_index}
+<<<<<<< HEAD
     FOR  ${t_index}  IN RANGE  ${tab_index}
         Wait and Click  xpath=(//ul[@id="w4"]/descendant::*[contains(@href,"${host}")])[${t_index + 1}]
         Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@class="mk-btn mk-btn_default"]
@@ -218,17 +268,33 @@ Test tubs privatization
         Click Element	xpath=(//a[@class="dropdown-toggle"])[3]
     END
 
+=======
+    :FOR  ${t_index}  IN RANGE  ${tab_index}
+    \    Wait and Click  xpath=(//ul[@id="w4"]/descendant::*[contains(@href,"${host}")])[${t_index + 1}]
+    \    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@class="mk-btn mk-btn_default"]
+    \    Test privatization view
+    \    Go To  ${host}/tenders/index
+    \    Click Element	xpath=(//a[@class="dropdown-toggle"])[3]
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
 
 Test privatization view
     Go To  ${host}/tenders/index
     ${mp_index}=  Get Element Count  xpath=//a[@class="mk-btn mk-btn_default"]
     ${mp_index}=  Convert To Integer   ${mp_index}
+<<<<<<< HEAD
     FOR  ${a_index}  IN RANGE  ${mp_index}
         Scroll To Element  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
         Wait and Click  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
         Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//*[@data-test-id="title"]
         Go To  ${host}/tenders/index
     END
+=======
+    :FOR  ${a_index}  IN RANGE  ${mp_index}
+    \    Scroll To Element  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
+    \    Wait and Click  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
+    \    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//*[@data-test-id="title"]
+    \    Go To  ${host}/tenders/index
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
 
 
 Test assets search
@@ -274,6 +340,7 @@ Test view registration and authorization
 
 
 Wait and Click
+<<<<<<< HEAD
     [Arguments]  ${locator}
     Wait Until Element Is Visible  ${locator}
     Scroll To Element  ${locator}
@@ -287,3 +354,18 @@ Scroll To Element
     ${elem_vert_pos}=  Get Vertical Position  ${locator}
     ${elem_gor_pos}=  Get Horizontal Position  ${locator}
     Execute Javascript  window.scrollTo(0,${elem_vert_pos - 300});
+=======
+   [Arguments]  ${locator}
+   Wait Until Element Is Visible  ${locator}
+   Scroll To Element  ${locator}
+   Click Element  ${locator}
+
+
+Scroll To Element
+   [Arguments]  ${locator}
+   Wait Until Page Contains Element  ${locator}  10
+   Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  ${locator}
+   ${elem_vert_pos}=  Get Vertical Position  ${locator}
+   ${elem_gor_pos}=  Get Horizontal Position  ${locator}
+   Execute Javascript  window.scrollTo(0,${elem_vert_pos - 300});
+>>>>>>> 902ca4aa1f64826dc7ea114e695872ba3a8e8718
