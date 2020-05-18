@@ -66,7 +66,6 @@ Test auction view
     Wait Until Element Is Visible  xpath=//a[@class="mk-btn mk-btn_default"]
     ${auction_index}=  Get Element Count  xpath=//a[@class="mk-btn mk-btn_default"]
     ${auction_index}=  Convert To Integer   ${auction_index}
- 
     FOR  ${a_index}  IN RANGE  ${auction_index}
         Scroll To Element  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
         Wait and Click  xpath=(//a[@class="mk-btn mk-btn_default"])[${a_index + 1}]
@@ -209,7 +208,6 @@ Test tubs privatization
     Click Element	xpath=(//a[@class="dropdown-toggle"])[3]
     ${tab_index}=  Get Element Count  xpath=//ul[@id="w4"]/descendant::*[contains(@href,"${host}")]
     ${tab_index}=  Convert To Integer   ${tab_index}
- 
     FOR  ${t_index}  IN RANGE  ${tab_index}
         Wait and Click  xpath=(//ul[@id="w4"]/descendant::*[contains(@href,"${host}")])[${t_index + 1}]
         Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@class="mk-btn mk-btn_default"]
@@ -274,25 +272,10 @@ Test view registration and authorization
 
 
 Wait and Click
- 
     [Arguments]  ${locator}
     Wait Until Element Is Visible  ${locator}
     Scroll To Element  ${locator}
     Click Element  ${locator}
-
-
-Scroll To Element
-    [Arguments]  ${locator}
-    Wait Until Page Contains Element  ${locator}  10
-    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  ${locator}
-    ${elem_vert_pos}=  Get Vertical Position  ${locator}
-    ${elem_gor_pos}=  Get Horizontal Position  ${locator}
-    Execute Javascript  window.scrollTo(0,${elem_vert_pos - 300});
-=======
-   [Arguments]  ${locator}
-   Wait Until Element Is Visible  ${locator}
-   Scroll To Element  ${locator}
-   Click Element  ${locator}
 
 
 Scroll To Element
@@ -302,4 +285,3 @@ Scroll To Element
    ${elem_vert_pos}=  Get Vertical Position  ${locator}
    ${elem_gor_pos}=  Get Horizontal Position  ${locator}
    Execute Javascript  window.scrollTo(0,${elem_vert_pos - 300});
- 

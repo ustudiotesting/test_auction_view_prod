@@ -153,7 +153,7 @@ Test view instruction
     Go To  ${host}
     Wait and Click  xpath=(//a[@class="dropdown-toggle"])[2]
     Wait and Click  xpath=//ul[@id="w3"]/descendant::*[contains(@href,"${host}pages/customer")][${d_index+ 1}]
-    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//div//*[contains(text(),"Інструкці")]
+    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//div//*[contains(text(),"Інструкція користувача")]
     Wait and Click  xpath=//a[@href="#__RefHeading___Toc28593_2455348075"]
 
 Test view sp-guides

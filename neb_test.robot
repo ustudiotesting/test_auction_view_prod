@@ -110,6 +110,12 @@ Test elastic auction_company_name search
     ${auction_company_name}=  Get Text  xpath=(//div[@class="search-result_article"])[1]
     ${auction_company_name}=  adapt_company_name  ${auction_company_name}
     Wait and Click  xpath=//span[@id="more-filter"]
+    Wait and Click  xpath=//span[@id="more-filter"]
+    Wait Until Element Is Visible  xpath=//input[@id="company_name"]
+    Input Text  xpath=//input[@id="company_name"]  ${auction_company_name}
+    Click Element  xpath=//a[@id="search"]
+    Wait and Click  xpath=//a[@class="mk-btn mk-btn_default"]
+    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.questions"]
 
 
 #--------------------------------------Documents view test-------------------------------------------------------------
