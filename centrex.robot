@@ -74,7 +74,7 @@ Test auction view
         Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.questions"]
         Wait Until Keyword Succeeds  10 x  1 s  Run Keywords
         ...  Wait and Click  xpath=//a[@data-test-id="sidebar.questions"]
-        ...  AND  Wait Until Keyword Succeeds  5 x  1 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.info"]
+        ...  AND  Wait Until Keyword Succeeds  5 x  3 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.info"]
         Go To  ${host}/tenders/index
     END
 
