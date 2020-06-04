@@ -218,8 +218,9 @@ Test lots search
     Go To  ${host}/lots/index
     ${lot_id}=  Get Text  xpath=(//*[@class="search-result_article"])[1]
     Input Text  xpath=//*[@id="lotssearch-lot_cbd_id"]  ${lot_id}
-    Click Element  xpath=//*[@data-test-id="search"]
-    Wait and Click  xpath=//a[@class="mk-btn mk-btn_default"]
+    Wait Until Keyword Succeeds  10 x  1 s  Run Keywords
+    ...  Click Element  xpath=//*[@data-test-id="search"]
+    ...  AND  Wait and Click  xpath=//a[@class="mk-btn mk-btn_default"]
     Wait Until Keyword Succeeds  5 x  1 s  Element Should Be Visible  xpath=//*[@data-test-id="title"]
 
 
