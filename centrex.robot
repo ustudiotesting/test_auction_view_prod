@@ -102,9 +102,10 @@ Test elastic auction_name search
     Wait Until Element Is Visible  xpath=//input[@id="attribute-input"]
     Select From List By Value  xpath=//select[@id="attribute-select"]  title
     Input Text  xpath=//input[@id="attribute-input"]  ${auction_name}
-    Click Element  xpath=//a[@id="search"]
-    Wait and Click  xpath=//a[@class="mk-btn mk-btn_default"]
-    Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.questions"]
+    Wait Until Keyword Succeeds  10 x  1 s  Run Keywords
+    ...  Click Element  xpath=//a[@id="search"]
+    ...  AND  Wait and Click  xpath=//a[@class="mk-btn mk-btn_default"]
+    ...  AND  Wait Until Keyword Succeeds  10 x  1 s  Element Should Be Visible  xpath=//a[@data-test-id="sidebar.questions"]
 
 
 Test elastic auction_company_name search
