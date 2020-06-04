@@ -107,7 +107,7 @@ Test elastic auction_name search
 
 Test elastic auction_company_name search
     Go To  ${host}/tenders/index
-    ${auction_company_name}=  Get Text  xpath=(//div[@class="search-result_article"])[1]
+    ${auction_company_name}=  Get Text  xpath=(//div[@class="search-result_bank"])[1]
     ${auction_company_name}=  adapt_company_name  ${auction_company_name}
     Wait and Click  xpath=//span[@id="more-filter"]
     Wait and Click  xpath=//span[@id="more-filter"]
