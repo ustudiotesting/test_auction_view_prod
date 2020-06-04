@@ -290,8 +290,9 @@ Test view registration and authorization
 Wait and Click
     [Arguments]  ${locator}
     Wait Until Element Is Visible  ${locator}
-    Scroll To Element  ${locator}
-    Click Element  ${locator}
+    Wait Until Keyword Succeeds  10 x  3 s  Run Keywords
+    ...  Scroll To Element  ${locator}
+    ...  AND  Click Element  ${locator}
 
 
 Scroll To Element
